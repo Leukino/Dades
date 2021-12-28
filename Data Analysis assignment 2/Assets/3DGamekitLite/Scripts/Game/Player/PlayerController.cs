@@ -1,8 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 using Gamekit3D.Message;
 using System.Collections;
 using UnityEngine.XR.WSA;
-
+using UnityEngine.Events;
 namespace Gamekit3D
 {
     [RequireComponent(typeof(CharacterController))]
@@ -31,6 +32,10 @@ namespace Gamekit3D
         public RandomAudioPlayer emoteDeathPlayer;
         public RandomAudioPlayer emoteAttackPlayer;
         public RandomAudioPlayer emoteJumpPlayer;
+
+        //public UnityEvent OnRevive, OnJump;
+        //public List<MonoBehaviour> onMessageReceivers;
+
 
         protected AnimatorStateInfo m_CurrentStateInfo;    // Information about the base layer of the animator cached.
         protected AnimatorStateInfo m_NextStateInfo;
@@ -289,6 +294,8 @@ namespace Gamekit3D
                     m_VerticalSpeed = jumpSpeed;
                     m_IsGrounded = false;
                     m_ReadyToJump = false;
+
+                    //TODO JUMP MESSAGE
                 }
             }
             else

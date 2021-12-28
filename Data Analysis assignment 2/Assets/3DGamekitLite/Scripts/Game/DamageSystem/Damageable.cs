@@ -63,6 +63,18 @@ namespace Gamekit3D
             isInvulnerable = false;
             m_timeSinceLastHit = 0.0f;
             OnResetDamage.Invoke();
+
+            var msg = new Damageable.DamageMessage()
+            {
+                damager = this,
+                damageSource = transform.position,
+                direction = Vector3.up,
+            };
+            for (var i = 0; i < onDamageMessageReceivers.Count; ++i)
+            {
+                var receiver = onDamageMessageReceivers[i] as IMessageReceiver;
+                receiver.OnReceiveMessage(MessageType.RESPAWN, this, msg);
+            }
         }
 
         public void SetColliderState(bool enabled)

@@ -11,6 +11,8 @@ namespace Gamekit3D
             DAMAGED,
             DEAD,
             RESPAWN,
+            JUMP,
+            LEVEL_SUCCESS
             //Add your user defined message type after
         }
 
